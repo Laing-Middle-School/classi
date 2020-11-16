@@ -11,6 +11,8 @@ $client->setRedirectUri('https://' . $config['site-domain'] . '/vaultdoor.php');
 $client->addScope('email');
 $client->addScope('profile');
 $client->addScope(Google_Service_Classroom::CLASSROOM_COURSES_READONLY);
+$client->addScope(Google_Service_Classroom::CLASSROOM_COURSEWORK_ME);
+$client->addScope(Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS_READONLY);
 $client->setIncludeGrantedScopes(true);
 $client->setLoginHint($_COOKIE['auth-login-hint']);
 

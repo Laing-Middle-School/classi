@@ -4,6 +4,7 @@ require 'config/config.php';
 include 'func.php';
 
 echo '
+<head>
 <title>classi</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -15,6 +16,7 @@ echo '
 <link rel="manifest" href="favicon/site.webmanifest">
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 ';
 
 if ( isset($_COOKIE['theme']) ) {
@@ -110,12 +112,32 @@ if (isset($_SESSION['access_token'])) {
 
   echo '<br>';
 
+
+
+  function listAssignments($service, $courseId) {
+    $params = array(
+        'pageSize' => 5,
+        'orderBy' => 'dueDate asc'
+    );
+
+  //echo '<br>';
+    $workresults = $service->courses_courseWork->listCoursesCourseWork($courseId, $params);
+    //echo 'Course: ' . $courseId . '<br>';
+        foreach ($workresults->getCourseWork() as $assignment) {
+            echo '<a href="' . $assignment->getAlternateLink() . '" target="_blank"><b>' . $assignment->getTitle() . '</b></a><br>';
+        }
+  echo '<br><br>';
+  }
+
+
+
 if (count($results->getCourses()) == 0) {
     echo "No courses found.\n";
   } else {
     foreach ($results->getCourses() as $course) {
       if ( $course->getCourseState() == 'ACTIVE' ) {
       echo '<h3><a href="' . $course->getAlternateLink() . authuser() . '" target="_blank">' . $course->getName() . '</a></h3>';
+      listAssignments($service, $course->getId());
     }
     }
 }
