@@ -1,3 +1,4 @@
+![classi Logo](/classi-240.png)
 ```
          __                _ 
    _____/ /___ ___________(_)
@@ -15,10 +16,11 @@ This repo is still in very early development. Please check back later if you wou
 
 ## Contributors
 **@lincolnthedev**: Backend; API & OAuth2 Handling<br>
+**@Clark242**: Frontend; Project Coordination<br>
 **@wilmar8028**: Backend<br>
-**@jacobbpog**: Backend
-
-Frontend designers will be added shortly
+**@sofiacatindig**: Frontend<br>
+**@jacobbpog**: Backend<br>
+**@adamrasgo**: Frontend
 
 ## Usage
 If you use any of this code, **please accredit the developers** (10 hours of pulling hair out is worth some credit). THIS CODE IS NOT AVAILABLE FOR COMMERCIAL USE UNLESS EXCLUSIVE PERMISSION IS GIVEN

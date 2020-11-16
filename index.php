@@ -124,7 +124,7 @@ if (isset($_SESSION['access_token'])) {
     $workresults = $service->courses_courseWork->listCoursesCourseWork($courseId, $params);
     //echo 'Course: ' . $courseId . '<br>';
         foreach ($workresults->getCourseWork() as $assignment) {
-            echo '<a href="' . $assignment->getAlternateLink() . '" target="_blank"><b>' . $assignment->getTitle() . '</b></a><br>';
+            echo '<a href="' . $assignment->getAlternateLink() . authuser() . '" target="_blank"><b>' . $assignment->getTitle() . '</b></a><br>';
         }
   echo '<br><br>';
   }
