@@ -2,6 +2,36 @@
 require_once __DIR__.'/vendor/autoload.php';
 require 'config/config.php';
 include 'func.php';
+require "predis-vendor/autoload.php";
+Predis\Autoloader::register();
+
+$redis = new Predis\Client(array(
+    "scheme" => "tcp",
+    "host" => "127.0.0.1",
+    "port" => 6379
+  ));
+
+$experimental_features = $redis->smembers('experimental_features');
+
+/*
+  if (in_array('<REMOVED FOR PRIVACY (WAS AN EMAIL ADDRESS)>', $experimental_features)) {
+    echo '<b>Hello <REMOVED FOR PRIVACY (WAS A NAME)>! Experimental Features Mode is On!</b> You can turn it off in classi preferences.';
+  }
+
+  if (in_array('<REMOVED FOR PRIVACY (WAS AN EMAIL ADDRESS)>', $experimental_features)) {
+    echo '<b>Hello <REMOVED FOR PRIVACY (WAS A NAME)>! Experimental Features Mode is On!</b> You can turn it off in classi preferences.';
+  }
+
+  if (in_array($email, $experimental_features)) {
+      echo '<b>Hello ' . $fname . '! Experimental Features Mode is On!</b> You can turn it off in classi preferences.';
+    }
+
+  echo '<b>' . count($experimental_features) . ' Devs:</b><br>';
+
+  foreach ( $experimental_features as $devs ) {
+    echo $devs . '<br>';
+   }
+    */
 
 echo '
 <head>
@@ -98,6 +128,10 @@ if (isset($_SESSION['access_token'])) {
   $profile =  $google_account_info->picture;
   setcookie('auth-login-hint', $email, time() + (86400 * 30), "/");
 
+  if (in_array($email, $experimental_features)) {
+        echo '<b>Hello ' . $fname . '! Experimental Features Mode is On!</b> You can turn it off in classi preferences.<br>';
+      }
+
   echo '<center>';
 
   echo "<img src='classi.png' height='80px' width='80px' style='margin-top:2rem'><br><br>";
@@ -144,6 +178,8 @@ if (count($results->getCourses()) == 0) {
 
 echo '<a href="preferences" target="_blank"><button>Preferences</button></a> ';
 echo '<a href="privacy.php" target="_blank"><button>Privacy Policy</button></a>';
+
+echo '<br><b>' . count($redis->smembers('classidevs')) . '</b> Developers Contribute to the classi Project<br><br>';
 
 } else {
   $redirect_uri = 'https://' . $_SERVER['HTTP_HOST'] . '/vault.php';
