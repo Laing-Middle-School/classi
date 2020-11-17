@@ -14,6 +14,8 @@ The Class UI
 ## Attention!
 This repo is still in very early development. Please check back later if you would like to use this project. KNOWN ERRORS ARE PRESENT
 
+Also, some services are required that are not included in this repo (like Apache, PHP, the Google API Client, and more.) Installation instructions will be included in this Readme when they are ready. Until then, you will have to set them up yourself if you want them.
+
 ## Contributors
 **@lincolnthedev**: Backend; API & OAuth2 Handling<br>
 **@Clark242**: Frontend; Project Coordination<br>
