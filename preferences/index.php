@@ -2,6 +2,26 @@
 //require_once __DIR__.'/vendor/autoload.php';
 //require 'config/config.php';
 
+
+
+require "../predis-vendor/autoload.php";
+
+Predis\Autoloader::register();
+
+$redis = new Predis\Client(array(
+    "scheme" => "tcp",
+    "host" => "127.0.0.1",
+    "port" => 6379
+  ));
+
+
+
+$classidevs = $redis->smembers('classidevs');
+
+
+
+
+
 echo '
 <title>classi</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -85,6 +105,14 @@ echo '<u><h4>Advanced</h4></u>';
 echo '<form method="post">' . '<b>Auth User: </b>' . '<input id="authuser" name="authuser" value="' . $_COOKIE['authuser'] . '" placeholder="Auth User Number (0-3)"><input type="submit" name="authuserBtn" value="Set Auth User"/></form>';
 echo '<form method="post">' . '<b>Erase <u>ALL</u> Cookies: </b>' . '<input type="submit" name="delete-cookies" value="THIS BUTTON WILL ERASE ALL OF YOUR CLASSI SETTINGS AND INFORMATION" width="100%" max-width="100px"/>';
 
+//setcookie('lincoln', 'This is Lincoln', time() + (86400 * 30 * 9999), "/");
+
+if ( $redis->sismember('classidevs', $_COOKIE['email']) == true ) {
+        echo '<br><br><br>';
+        echo '<u><h4>~ classi Dev Settings ~</h4></u>';
+        echo '<form method="post">' . '<b>classi Global Announcement: </b>' . '<input id="globalann" name="globalann" value="' . $redis->get('global_message') . '" placeholder="Global Announcement Text (HTML Formatting)"><input type="submit" name="annBtn" value="Set Global Announcement"/></form>';
+      }
+
 if ( isset($_COOKIE['lincoln']) ) {
         echo '<br><br><br>';
         echo '<u><h4>~ Lincoln Only Experimental Features ~</h4></u>';
@@ -116,6 +144,11 @@ if(isset($_POST['logout'])) {
 
 if(isset($_POST['authuser'])) {
     setcookie('authuser', $_POST['authuser'], time() + (86400 * 30 * 9999), "/");
+    successMessage();
+  }
+
+if(isset($_POST['globalann'])) {
+    $redis->set('global_message', $_POST['globalann']);
     successMessage();
   }
 

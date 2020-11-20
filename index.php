@@ -12,6 +12,13 @@ $redis = new Predis\Client(array(
   ));
 
 $experimental_features = $redis->smembers('experimental_features');
+$global_message = $redis->get('global_message');
+
+function global_message($global_message) {
+        if ( !empty($global_message) ) {
+                echo '<center><p style="background-color:orange;color:black">' . $global_message . '</p></center>';
+            }
+    }
 
 /*
   if (in_array('<REMOVED FOR PRIVACY (WAS AN EMAIL ADDRESS)>', $experimental_features)) {
@@ -127,9 +134,10 @@ if (isset($_SESSION['access_token'])) {
   $fname =  $google_account_info->given_name;
   $profile =  $google_account_info->picture;
   setcookie('auth-login-hint', $email, time() + (86400 * 30), "/");
-
+  setcookie('email', $email, time() + (86400 * 30), "/");
+  global_message($global_message);
   if (in_array($email, $experimental_features)) {
-        echo '<b>Hello ' . $fname . '! Experimental Features Mode is On!</b> You can turn it off in classi preferences.<br>';
+        echo '<img src="classidev.png" height="24px" width="24px" style="margin-top:1rem;margin-left:1rem">';
       }
 
   echo '<center>';
@@ -177,9 +185,14 @@ if (count($results->getCourses()) == 0) {
 }
 
 echo '<a href="preferences" target="_blank"><button>Preferences</button></a> ';
-echo '<a href="privacy.php" target="_blank"><button>Privacy Policy</button></a>';
+echo '<a href="privacy.php" target="_blank"><button>Privacy Policy</button></a> ';
+echo '<a href="stats.php" target="_blank"><button>Stats</button></a><br><br>';
 
-echo '<br><b>' . count($redis->smembers('classidevs')) . '</b> Developers Contribute to the classi Project<br><br>';
+//echo '<br><br><b><u>Stats</u></b>' . '<b>' . count($redis->smembers('classidevs')) . '</b> Developer(s) Contribute to the classi Project<br><br>';
+
+if (in_array($email, $experimental_features)) {
+        echo '<img src="classidev.png" height="24px" width="24px" style="margin-top:1rem;margin-left:1rem"> <p>You are a classi contributor.</p>';
+      }
 
 } else {
   $redirect_uri = 'https://' . $_SERVER['HTTP_HOST'] . '/vault.php';
