@@ -37,8 +37,11 @@ function install($program) {
 
 
 
+    install('git');
     install('apache2');
-    install('jddhufjdndd');
+    install('');
+
+
 
 
 
