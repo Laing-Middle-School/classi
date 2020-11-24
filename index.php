@@ -1,7 +1,4 @@
 <?php
-
-try {
-
 require_once __DIR__.'/vendor/autoload.php';
 require 'config/config.php';
 include 'func.php';
@@ -200,13 +197,4 @@ if (in_array($email, $experimental_features)) {
 } else {
   $redirect_uri = 'https://' . $_SERVER['HTTP_HOST'] . '/vault.php';
   header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
-}
-
-} catch (Exception $e) {
-  echo('
-    <center>
-    <h1>ERROR!</h1>
-    <p>An error has occurred! Please contact classi support if the problem persists.
-    </center>
-  ')
 }
