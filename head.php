@@ -18,7 +18,6 @@
 
 
 
-
     // Redis
 
         Predis\Autoloader::register();

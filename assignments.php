@@ -1,9 +1,8 @@
 <?php
 
 require_once __DIR__.'/vendor/autoload.php';
-# require 'config/config.php';
+require 'config/config.php';
 include 'func.php';
-
 require 'config.php';
 
 $c = new classiConfig();
@@ -183,3 +182,5 @@ echo('
 
 </html>
 ');
+
+}
