@@ -1,8 +1,13 @@
 <?php
+
 require_once __DIR__.'/vendor/autoload.php';
-require 'config/config.php';
+// require 'config/config.php';
 include 'func.php';
 require "predis-vendor/autoload.php";
+require 'config.php';
+
+$c = new classiConfig();
+
 Predis\Autoloader::register();
 
 $redis = new Predis\Client(array(
@@ -20,181 +25,205 @@ function global_message($global_message) {
             }
     }
 
-/*
-  if (in_array('<REMOVED FOR PRIVACY (WAS AN EMAIL ADDRESS)>', $experimental_features)) {
-    echo '<b>Hello <REMOVED FOR PRIVACY (WAS A NAME)>! Experimental Features Mode is On!</b> You can turn it off in classi preferences.';
-  }
-
-  if (in_array('<REMOVED FOR PRIVACY (WAS AN EMAIL ADDRESS)>', $experimental_features)) {
-    echo '<b>Hello <REMOVED FOR PRIVACY (WAS A NAME)>! Experimental Features Mode is On!</b> You can turn it off in classi preferences.';
-  }
-
-  if (in_array($email, $experimental_features)) {
-      echo '<b>Hello ' . $fname . '! Experimental Features Mode is On!</b> You can turn it off in classi preferences.';
-    }
-
-  echo '<b>' . count($experimental_features) . ' Devs:</b><br>';
-
-  foreach ( $experimental_features as $devs ) {
-    echo $devs . '<br>';
-   }
-    */
-
-echo '
-<head>
-<title>classi</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-<link rel="manifest" href="favicon/site.webmanifest">
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-';
-
-if ( isset($_COOKIE['theme']) ) {
-
-    if ( $_COOKIE['theme'] == 'Light Theme' ) {
-          echo '
-            <style>
-                body {
-                    font-family: Comfortaa;
-                }
-            </style>
-          ';
-        }
-
-    if ( $_COOKIE['theme'] == 'Dark Theme' ) {
-          echo '
-            <style>
-                body {
-                    font-family: Comfortaa;
-                    background-color: #121212;
-                    color: #cccccc;
-                }
-
-                a {
-                    color: #cccccc;
-                    text-decoration: none;
-                }
-            </style>
-          ';
-        }
-
-    if ( $_COOKIE['theme'] == 'Da Lincoln Theme' ) {
-          echo '
-            <style>
-                body {
-                    font-family: Comfortaa;
-                    background-color: #121212;
-                    color: #ffa500;
-                }
-
-                a {
-                    color: #ffa500;
-                    text-decoration: none;
-                }
-            </style>
-          ';
-        }
-
-}
-
-echo '<body>';
-
-function authuser() {
-  if(isset($_COOKIE['authuser'])) {
-    $authuservalue = '?authuser=' . $_COOKIE['authuser'];
-    return $authuservalue;
-  }
-}
-
-session_start();
-
-$client = new Google_Client();
-$client->setApplicationName("classi");
-$client->setAuthConfig('gcred.json');
-$client->addScope('email');
-$client->addScope('profile');
-$client->addScope(Google_Service_Classroom::CLASSROOM_COURSES_READONLY);
-$client->addScope(Google_Service_Classroom::CLASSROOM_COURSEWORK_ME);
-$client->setLoginHint($_COOKIE['auth-login-hint']);
-
-if (isset($_SESSION['access_token'])) {
-  $client->setAccessToken($_SESSION['access_token']);
-
-  $google_oauth = new Google_Service_Oauth2($client);
-  $google_account_info = $google_oauth->userinfo->get();
-  $email =  $google_account_info->email;
-  $name =  $google_account_info->name;
-  $fname =  $google_account_info->given_name;
-  $profile =  $google_account_info->picture;
-  setcookie('auth-login-hint', $email, time() + (86400 * 30), "/");
-  setcookie('email', $email, time() + (86400 * 30), "/");
-  global_message($global_message);
-  if (in_array($email, $experimental_features)) {
-        echo '<img src="classidev.png" height="24px" width="24px" style="margin-top:1rem;margin-left:1rem">';
-      }
-
-  echo '<center>';
-
-  echo "<img src='classi.png' height='80px' width='80px' style='margin-top:2rem'><br><br>";
-
-  echo '<h1>' . $config['welcome-back-message'] . ' ' . $fname . '</h1>';
-
-  //echo '<img src="' . $profile . '">' . '<br>' . $config['welcome-back-message'] . ' ' . $fname . '<br>' . $email . '<br>';
-
-  $service = new Google_Service_Classroom($client);
-  $optParams = array('pageSize' => 10);
-  $results = $service->courses->listCourses($optParams);
-
-  echo '<br>';
 
 
 
-  function listAssignments($service, $courseId) {
-    $params = array(
-        'pageSize' => 5,
-        'orderBy' => 'dueDate asc'
-    );
 
-  //echo '<br>';
-    $workresults = $service->courses_courseWork->listCoursesCourseWork($courseId, $params);
-    //echo 'Course: ' . $courseId . '<br>';
-        foreach ($workresults->getCourseWork() as $assignment) {
-            echo '<a href="' . $assignment->getAlternateLink() . authuser() . '" target="_blank"><b>' . $assignment->getTitle() . '</b></a><br>';
-        }
-  echo '<br><br>';
-  }
+echo('
+<html lang="en">
+
+  <meta charset="utf-8">
+  <meta name="classi" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="South Seventh Software">
+
+  <title>classi</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts Comfortaa Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="bootstrap/css/small-business.css" rel="stylesheet">
+
+<head
+');
 
 
 
-if (count($results->getCourses()) == 0) {
-    echo "No courses found.\n";
-  } else {
-    foreach ($results->getCourses() as $course) {
-      if ( $course->getCourseState() == 'ACTIVE' ) {
-      echo '<h3><a href="' . $course->getAlternateLink() . authuser() . '" target="_blank">' . $course->getName() . '</a></h3>';
-      listAssignments($service, $course->getId());
-    }
-    }
-}
+echo('
+<body>
 
-echo '<a href="preferences" target="_blank"><button>Preferences</button></a> ';
-echo '<a href="privacy.php" target="_blank"><button>Privacy Policy</button></a> ';
-echo '<a href="stats.php" target="_blank"><button>Stats</button></a><br><br>';
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">classi</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Links</a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link" href="#">Communications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+');
 
-//echo '<br><br><b><u>Stats</u></b>' . '<b>' . count($redis->smembers('classidevs')) . '</b> Developer(s) Contribute to the classi Project<br><br>';
 
-if (in_array($email, $experimental_features)) {
-        echo '<img src="classidev.png" height="24px" width="24px" style="margin-top:1rem;margin-left:1rem"> <p>You are a classi contributor.</p>';
-      }
 
-} else {
-  $redirect_uri = 'https://' . $_SERVER['HTTP_HOST'] . '/vault.php';
-  header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
-}
+echo('
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Heading Row -->
+    <div class="row align-items-center my-5">
+      <div class="col-lg-7">
+        <img class="img-fluid rounded mb-4 mb-lg-0" src="https://raw.githubusercontent.com/Laing-Middle-School/classi-development/master/classi.png" alt="">
+      </div>
+      <!-- /.col-lg-8 -->
+      <div class="col-lg-5">
+        <h1 class="font-weight-light">Welcome to classi</h1>
+        <p>A better user interface for the Google Classroom and Canvas learning platforms<br><br>By students. For students.</p>
+        <a class="btn btn-primary" href="#">Learn More</a>
+      </div>
+      <!-- /.col-md-4 -->
+    </div>
+    <!-- /.row -->
+');
+
+
+
+echo('
+    <!-- Learn More -->
+    <div class="card text-dark bg-secondary my-2 py-1 text-center">
+      <div class="card-body">
+        <p class="m-0" style="color:white">You' . "'" . 're already logged in! Click a card below to get to what you are looking for!</p>
+      </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Assignments</h2>
+            <p class="card-text">Find your homework, to-do' . "'" . 's, and projects here! All assignments are displayed with the time left remaining for each task for users to keep track of every upcoming task needed to be done. It is important for students to be aware of their upcoming due dates so they are able to complete assignments on time. Users are able to mark their completion of assignments after fufillment.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">Access</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Events</h2>
+            <p class="card-text">All upcoming events happening in your school/district are viewed here. Click on this card to view all that will occur in and out your area for further notice. These reminders are for the purpose to prompt students on finding out the lastest news and upcoming events/occasions.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">Access</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Reminders</h2>
+            <p class="card-text">You can access their daily reminders sent from teachers and administrators on this card. Whether it' . "'" . 's to bring money for a field trip or an annoucement to audition for the school play all students can view their reminders here. The importance for students to know what they must get done is crucial, and classi provides a way for students to access these ' . "To-Do's." . '</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">Access</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+
+    </div>
+    <!-- /.row -->
+');
+
+
+
+echo('
+    <!-- Content Row -->
+    <div class="row">
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">By Students, For Students</h2>
+            <p class="card-text">classi is a project created by and run by students. classi' . "'" . 's main goal is to make being a student in this technological age easier.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">Access</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Open Source</h2>
+            <p class="card-text">All of classi' . "'" . 's code is available to anyone that wants to take a look at it or contribute to it.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">Access</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title">Info for Nerds</h2>
+            <p class="card-text">Built with <b>PHP</b><br>Hosted by <b>Linode</b><br>Run Using <b>Docker</b><br>Version Control by <b>GitHub</b></p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary btn-sm">Access</a>
+          </div>
+        </div>
+      </div>
+      <!-- /.col-md-4 -->
+
+    </div>
+    <!-- /.row -->
+');
+
+
+
+echo('
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">This work by contributors at Laing Middle School is under Creative Commons License CC BY-NC-SA<br>Theme derived from work by Start Bootstrap<br>The classi logo and name are unregistered trademarks of @lincolnthedev</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="bootstrap/vendor/jquery/jquery.min.js"></script>
+  <script src="bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+');
