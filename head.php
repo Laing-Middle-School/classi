@@ -15,7 +15,7 @@
         require_once __DIR__.'/vendor/autoload.php';
         require 'config/config.php';
         include 'func.php';
-        require "predis-vendor/autoload.php";
+
 
 
 

@@ -16,7 +16,7 @@ $client->addScope(Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS_READONLY);
 $client->setIncludeGrantedScopes(true);
 $client->setLoginHint($_COOKIE['auth-login-hint']);
 
-require "predis-vendor/autoload.php";
+
 
 Predis\Autoloader::register();
 
