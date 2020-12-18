@@ -195,9 +195,14 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
   //echo '<br>';
     $workresults = $service->courses_courseWork->listCoursesCourseWork($courseId, $params);
     //echo 'Course: ' . $courseId . '<br>';
+
+        $i = 0;
+
+        echo('<div class="row">');
+
         foreach ($workresults->getCourseWork() as $assignment) {
-            // echo '<a href="' . $assignment->getAlternateLink() . authuser() . '" target="_blank"><b>' . $assignment->getTitle() . '</b></a><br>';
             echoCoursework($courseName, $assignment->getTitle(), $assignment->getAlternateLink() . $authuser);
+            if ( $i++%3 === 0 ) { echo('</div><div class="row">'); }
         }
   echo '<br><br>';
   }
