@@ -1,13 +1,15 @@
 <?php
 require_once __DIR__.'/vendor/autoload.php';
-require 'config/config.php';
+require 'config.php';
+
+$c = new classiConfig();
 
 session_start();
 
 $client = new Google_Client();
 $client->setApplicationName("classi");
 $client->setAuthConfigFile('gcred.json');
-$client->setRedirectUri('https://' . $config['site-domain'] . '/vaultdoor.php');
+$client->setRedirectUri($c->get()['important']['install-loc'] . '/vaultdoor.php');
 $client->addScope('email');
 $client->addScope('profile');
 $client->addScope(Google_Service_Classroom::CLASSROOM_COURSES_READONLY);
@@ -16,7 +18,7 @@ $client->addScope(Google_Service_Classroom::CLASSROOM_ANNOUNCEMENTS_READONLY);
 $client->setIncludeGrantedScopes(true);
 $client->setLoginHint($_COOKIE['auth-login-hint']);
 
-require "predis-vendor/autoload.php";
+require "vendor/autoload.php";
 
 Predis\Autoloader::register();
 
@@ -41,13 +43,6 @@ if (! isset($_GET['code'])) {
   $google_account_info = $google_oauth->userinfo->get();
   $email =  $google_account_info->email;
   $name =  $google_account_info->name;
-
-/*
-    if ( md5($email.$email) == '79b54c9d521b926eeae982c72d74ba2a' or md5($email.$email) == '87b2ff310abf9bc66658fc7d1f9b98e7' ) {
-          setcookie('lincoln', 'This is Lincoln', time() + (86400 * 30 * 9999), "/");
-      }
-*/
-
 
   if ( $redis->sismember('users', $email) == false ) {
 
