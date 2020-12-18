@@ -130,7 +130,7 @@ echo('
       </div>
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
-        <h1 class="font-weight-light">Hello there,' . $fname . '! Thanks for using classi!</h1>
+        <h1 class="font-weight-light">Hello there, ' . $fname . '! Thanks for using classi!</h1>
         <p>Take a look at your assignments below.</p>
         <!-- <a class="btn btn-primary" href="#">Learn More</a> -->
       </div>
