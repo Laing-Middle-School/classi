@@ -62,6 +62,6 @@ if (! isset($_GET['code'])) {
           echo '<img src="classidev.png" height="24px" width="24px" style="margin-top:1rem;margin-left:1rem"> <p>You are a classi contributor.</p>';
         }
 
-  $redirect_uri = 'https://' . $_SERVER['HTTP_HOST'] . '/index.php';
+  $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/assignments.php';
   header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
