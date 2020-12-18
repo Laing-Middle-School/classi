@@ -204,6 +204,9 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
             echoCoursework($courseName, $assignment->getTitle(), $assignment->getAlternateLink() . $authuser);
             if ( $i++%3 === 0 ) { echo('</div><br><div class="row">'); }
         }
+
+        echo('</div');
+
   echo '<br><br>';
   }
 
