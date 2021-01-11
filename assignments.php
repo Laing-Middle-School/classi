@@ -62,19 +62,21 @@ echo('
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="assignments.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Links</a>
+            <a class="nav-link" href="links.html">Links</a>
           </li>
           <li class="nav-item">
-           <a class="nav-link" href="#">Communications</a>
+           <a class="nav-link" href="Communications2.html">Communications</a>
           </li>
+          <!--
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
+          -->
         </ul>
       </div>
     </div>
