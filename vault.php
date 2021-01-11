@@ -61,5 +61,5 @@ echo '<center><img src="resources/animations/exploding-loader.gif"></center>';
 
 echo '</html>';
 
-$redirect_uri = 'https://' . $_SERVER['HTTP_HOST'] . '/vaultdoor.php';
+$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/vaultdoor.php';
 header('Refresh:7; url=' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
