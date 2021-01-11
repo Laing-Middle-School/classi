@@ -36,13 +36,13 @@ echo('
   <title>classi</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="' . $c->get()['important']['install-loc'] . '/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="' . $c->get()['important']['install-loc'] . '/bootstrap/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Google Fonts Comfortaa Font -->
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="' . $c->get()['important']['install-loc'] . '/bootstrap/css/small-business.css" rel="stylesheet">
+  <link href="' . $c->get()['important']['install-loc'] . '/bootstrap/bootstrap/css/small-business.css" rel="stylesheet">
 
 <head
 ');
