@@ -22,6 +22,8 @@ function global_message($global_message) {
             }
     }
 
+session_start();
+
 
 
 
@@ -93,8 +95,6 @@ function authuser() {
     return $authuservalue;
   }
 }
-
-session_start();
 
 $client = new Google_Client();
 $client->setApplicationName("classi");
