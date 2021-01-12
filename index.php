@@ -22,6 +22,7 @@ echo('
 if ( isset($_GET['consent']) and $_GET['consent'] == 'true' ) {
     echo('Thank you! You will be redirected to classi in a few moments.');
     setcookie('consent', 'yes', time() + (86400 * 30 * 9999));
+    header("Refresh:3");
 }
 
 ob_end_flush();
