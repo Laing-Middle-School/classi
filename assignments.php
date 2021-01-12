@@ -205,7 +205,7 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
 
         foreach ($workresults->getCourseWork() as $assignment) {
             echoCoursework($courseName, $assignment->getTitle(), $assignment->getAlternateLink() . $authuser);
-            if ( ++$i%3 === 0 ) { echo('</div><br><div class="row">'); $i = 0; }
+            if ( ++$i%3 === 0 ) { echo('</div><br><div class="row">'); }
         }
 
         echo('</div');
