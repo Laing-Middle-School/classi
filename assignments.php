@@ -117,10 +117,11 @@ if (isset($_SESSION['access_token'])) {
   setcookie('auth-login-hint', $email, time() + (86400 * 30), "/");
   setcookie('email', $email, time() + (86400 * 30), "/");
   global_message($global_message);
+  /*
   if (in_array($email, $experimental_features)) {
         echo '<img src="classidev.png" height="24px" width="24px" style="margin-top:1rem;margin-left:1rem">';
       }
-
+    */
 echo('
   <!-- Page Content -->
   <div class="container">
@@ -204,7 +205,7 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
 
         foreach ($workresults->getCourseWork() as $assignment) {
             echoCoursework($courseName, $assignment->getTitle(), $assignment->getAlternateLink() . $authuser);
-            if ( $i++%3 === 0 ) { echo('</div><br><div class="row">'); }
+            if ( ++$i%3 === 0 ) { echo('</div><br><div class="row">'); $i = 0; }
         }
 
         echo('</div');
