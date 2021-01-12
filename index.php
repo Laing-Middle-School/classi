@@ -4,8 +4,7 @@ ob_start();
 
 if ( isset($_COOKIE['consent']) and $_COOKIE['consent'] == 'yes' ) {
     echo('<h1>classi</h1>');
-    sleep(2);
-    header("Location: assignments.php");
+    header("Location: assignments.php Refresh: 3");
 } else {
 
 echo('
