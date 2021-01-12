@@ -4,7 +4,7 @@
 
 
 
-require "../predis-vendor/autoload.php";
+require "../vendor/autoload.php";
 
 Predis\Autoloader::register();
 
@@ -16,7 +16,7 @@ $redis = new Predis\Client(array(
 
 
 
-$classidevs = $redis->smembers('classidevs');
+// $classidevs = $redis->smembers('classidevs');
 
 
 
