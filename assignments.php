@@ -208,7 +208,7 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
             if ( ++$i%3 === 0 ) { echo('</div><br><div class="row">'); }
         }
 
-        echo('</div');
+        echo('</div>');
 
   echo '<br><br>';
   }
