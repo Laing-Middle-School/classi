@@ -21,6 +21,7 @@ $redis = new Predis\Client(array(
 
 
 
+ob_start();
 
 echo '
 <title>classi</title>
@@ -126,7 +127,7 @@ if ( isset($_COOKIE['lincoln']) ) {
 function successMessage() {
         ob_clean();
         echo "<center><p style='margin-top:100px'><img src='animations/c-spinner.gif' height='100px' width='100px'><br><br>Preferences updated!</p></center>";
-        echo('<script>window.location.replace("#");</script>');
+        header("Refresh:2");
     }
 
 
@@ -177,3 +178,5 @@ if(isset($_POST['theme'])) {
     setcookie('theme', $_POST['theme'], time() + (86400 * 30 * 9999), "/");
     successMessage();
   }
+
+ob_end_flush();
