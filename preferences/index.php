@@ -126,7 +126,6 @@ if ( isset($_COOKIE['lincoln']) ) {
 function successMessage() {
         ob_clean();
         echo "<center><p style='margin-top:100px'><img src='animations/c-spinner.gif' height='100px' width='100px'><br><br>Preferences updated!</p></center>";
-        header("Refresh:2");
         echo('<script>window.location.replace("#");</script>');
     }
 
