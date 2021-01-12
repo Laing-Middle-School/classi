@@ -3,8 +3,7 @@
 ob_start();
 
 if ( isset($_COOKIE['consent']) and $_COOKIE['consent'] == 'yes' ) {
-    echo('<h1>classi</h1>');
-    header("Refresh: 3; Location: assignments.php");
+    echo('<h1>classi</h1><meta http-equiv="refresh" content="2;url=assignments.php">');
 } else {
 
 echo('
