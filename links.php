@@ -1,3 +1,10 @@
+<?php
+
+    $minimal = 'yes';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +23,9 @@
   <!-- Custom styles for this template -->
   <link href="bootstrap/css/small-business.css" rel="stylesheet">
 
+  <!-- Comfortaa Font from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -23,22 +33,20 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">classi</a>
+      <a class="navbar-brand" href="index.php">classi</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Home</a>
+          </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
+            <a class="nav-link" href="links.html">Links</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Links</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Communications</a>
+            <a class="nav-link" href="Communications2.html">Communications</a>
           </li>
       
           </li>
@@ -50,29 +58,31 @@
   <!-- Page Content -->
   <div class="container">
 
+    <?php if ( $minimal == 'yes' ) { ?>
+
+    <!-- Heading Row -->
+      <center><br><br><h1>Useful Links for classi!</h1><br></center>
+    <!-- /.row -->
+
+    <?php } else { ?>
+
     <!-- Heading Row -->
     <div class="row align-items-center my-5">
-      <div class="col-lg-7">
-        <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
-      </div>
-      <!-- /.col-lg-8 -->
-      <div class="col-lg-5">
-        <h1 class="font-weight-light">Useful Links for classi!</h1>
-        <p>This page is here for you to find all your links to different student platforms and apps! These catagories will tell you where different apps and links are based on what they do. </p>
-        
-      </div>
-      <!-- /.col-md-4 -->
+      <center>
+        <h1><b>Useful Links for classi!</b></h1>
+        <p>This page is here for you to find all your links to different student platforms and apps! These categories will tell you where different apps and links are based on what they do.</p>
+      </center>
     </div>
     <!-- /.row -->
 
     <!-- Call to Action Well -->
     <div class="card text-white bg-secondary my-5 py-4 text-center">
       <div class="card-body">
-        <p class="text-white m-0">Down nelow are all the links you need! Feel free to press 
-
-        </p>
+        <p class="text-white m-0">Down below are some helpful links you may need. To use them, just click the button at the bottom of the card.</p>
       </div>
     </div>
+
+    <?php } ?>
 
    <!-- Content Row -->
       <h2 style="text-align:left; margin-bottom: 40px;" class="category-title">Study Games</h2>
