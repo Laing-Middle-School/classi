@@ -3,10 +3,12 @@
 ob_start();
 
 if ( isset($_COOKIE['consent']) and $_COOKIE['consent'] == 'yes' ) {
-    echo('<h1>classi</h1><meta http-equiv="refresh" content="2;url=assignments.php">');
+    echo('<title>classi</title><center><br><img src="resources/preloader.gif"/><h1 style="font-size:70px">classi</h1><meta http-equiv="refresh" content="2;url=assignments.php"></center>');
 } else {
 
 echo('
+
+<title>classi</title>
 
 <center>
 

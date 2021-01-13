@@ -28,6 +28,12 @@ session_start();
 
 
 
+if ( isset($_COOKIE['consent']) and $_COOKIE['consent'] == 'yes' ) {
+} else {
+    echo('<meta http-equiv="refresh" content="2;url=assignments.php">');
+    exit;
+}
+
 echo('
 <html lang="en">
 
