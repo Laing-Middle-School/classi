@@ -140,7 +140,7 @@ echo('
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
         <h1 class="font-weight-light">Hello there, ' . $fname . '! Thanks for using classi!</h1>
-        <p>Take a look at your assignments below.</p>
+        <p>You can take a look at your assignments below.</p>
         <!-- <a class="btn btn-primary" href="#">Learn More</a> -->
       </div>
       <!-- /.col-md-4 -->
@@ -184,7 +184,7 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
             <p class="card-text">' . $assignmentName . '</p>
           </div>
           <div class="card-footer">
-            <a href="' . $assignmentURL . '" class="btn btn-primary btn-sm">View Assignment</a>
+            <a href="' . $assignmentURL . '" target="_blank" class="btn btn-primary btn-sm">View Assignment</a>
           </div>
         </div>
       </div>
