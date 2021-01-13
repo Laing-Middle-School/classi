@@ -8,7 +8,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
       
-        <title>techHelp</title>
+        <title>classi - Communications</title>
       
         <!-- Bootstrap core CSS -->
         <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,50 +20,36 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
           <div class="container">
-            <a class="navbar-brand" href="#">Classi</a>
+            <a class="navbar-brand" href="index.php">classi</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Communications2.html">Teachers
+                  <a class="nav-link" href="comm-teachers.php">Teachers
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Communications4.html">Staff</a>
+                  <a class="nav-link" href="comm-staff.php">Staff</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Communications3.html">Students</a>
+                  <a class="nav-link" href="comm-students.php">Students</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Communications1.html">Tech Help</a>
+                  <a class="nav-link" href="comm-tech.php">Tech Help</a>
                 </li>
+
+                <li class="nav-item"><a class="nav-link"></a></li>
+                <li class="nav-item"><a class="nav-link"></a></li>
+
                 <li class="nav-item">
-                  <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                         </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                          </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                            </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                             </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                                </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                              </a>
-                </li>
+                  <a class="nav-link" href="index.php">Home</a>
                 </li>   <li class="nav-item">
-                  <a class="nav-link" href="">   Home                                 </a>
+                  <a class="nav-link" href="links.php">Links</a>
                 </li>   <li class="nav-item">
-                  <a class="nav-link" href="links.php">  Links                                  </a>
-                </li>   <li class="nav-item">
-                  <a class="nav-link" href="Teachers.html">   Communications                                </a>
+                  <a class="nav-link" href="comm-teachers.php">Communications</a>
  
                 </li>
               </ul>

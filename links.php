@@ -46,7 +46,7 @@
             <a class="nav-link" href="links.php">Links</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Communications2.html">Communications</a>
+            <a class="nav-link" href="comm-teachers.php">Communications</a>
           </li>
       
           </li>
