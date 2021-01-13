@@ -12,7 +12,8 @@ echo('
 
 <h1>Hello</h1>
 <p>By clicking the link below and continuing to classi, you acknowledge that classi is beta software and consent to the use of browser cookies and/or other types of tracking for functional purposes and/or improving the classi service. No information will ever be sold to third parties.</p>
-<h3><a href="?consent=true">OK</a></h3>
+<h3><a href="?consent=true">OK</a></h3><br>
+<p>classi is an open source project by students and other contributors at Laing Middle School. For information about the project and/or information about reusing the classi code, please contact <a href="mailto:classi@askthetech.guru">classi@askthetech.guru</a>.<br>🐧 🐘 🐳</p>
 
 </center>
 
