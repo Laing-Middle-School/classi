@@ -1,4 +1,7 @@
 <?php
+
+ob_start();
+
 require_once __DIR__.'/vendor/autoload.php';
 require 'config.php';
 
@@ -67,3 +70,5 @@ if (! isset($_GET['code'])) {
   $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/assignments.php';
   header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 }
+
+ob_end_flush();
