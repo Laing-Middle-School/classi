@@ -20,43 +20,43 @@
         <!-- Navigation -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
           <div class="container">
-            <a class="navbar-brand" href="#">Classi</a>
+            <a class="navbar-brand" href="index.php">classi</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="Communications2.html">Teachers
+                  <a class="nav-link" href="comm-teachers.php">Teachers
                     <span class="sr-only">(current)</span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="communications4.html">Staff</a>
+                  <a class="nav-link" href="comm-staff.php">Staff</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="communications3.html">Students</a>
+                  <a class="nav-link" href="comm-students.php">Students</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="Communications1.html">Tech Help</a>
+                  <a class="nav-link" href="comm-tech.php">Tech Help</a>
                 </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                         </a>
+                                             </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                          </a>
+                                              </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                            </a>
+                                                </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                             </a>
+                                                 </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                                </a>
+                                                    </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO">                              </a>
+                                                  </a>
                   </li>
                   </li>   <li class="nav-item">
                     <a class="nav-link" href="">   Home                                 </a>
