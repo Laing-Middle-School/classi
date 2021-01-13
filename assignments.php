@@ -113,7 +113,7 @@ $client->setLoginHint($_COOKIE['auth-login-hint']);
 
 if (isset($_SESSION['access_token'])) {
 
-  $payload = $client->verifyIdToken($id_token);
+  $payload = $client->verifyIdToken($_SESSION['access_token']);
   if ($payload) {
     $userid = $payload['sub'];
 
