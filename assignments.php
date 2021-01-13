@@ -113,8 +113,7 @@ $client->setLoginHint($_COOKIE['auth-login-hint']);
 
 if (isset($_SESSION['access_token'])) {
 
-  $payload = $client->verifyIdToken($_SESSION['access_token']);
-  if ($payload) {
+  if ($client->isAccessTokenExpired()) {
     // If user is logged in properly
   } else {
     echo('
