@@ -113,9 +113,9 @@ $client->setLoginHint($_COOKIE['auth-login-hint']);
 
 if (isset($_SESSION['access_token'])) {
 
+  $client->setAccessToken($_SESSION['access_token']);
+
   if ($client->isAccessTokenExpired()) {
-    // If user is logged in properly
-  } else {
     echo('
       <!-- Page Content -->
       <div class="container">
@@ -138,8 +138,6 @@ if (isset($_SESSION['access_token'])) {
 
     exit;
   }
-
-  $client->setAccessToken($_SESSION['access_token']);
 
   $google_oauth = new Google_Service_Oauth2($client);
   $google_account_info = $google_oauth->userinfo->get();
