@@ -115,10 +115,7 @@ if (isset($_SESSION['access_token'])) {
 
   $payload = $client->verifyIdToken($_SESSION['access_token']);
   if ($payload) {
-    $userid = $payload['sub'];
-
-    // If request specified a G Suite domain:
-    $domain = $payload['hd'];
+    // If user is logged in properly
   } else {
     echo('
       <!-- Page Content -->
