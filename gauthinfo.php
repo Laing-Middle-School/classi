@@ -1,7 +1,7 @@
 <?php
 $client = new Google_Client();
 $client->setApplicationName("classi");
-$client->setAuthConfig('gcred.json');
+$client->setAuthConfig('../gcred.json');
 $client->addScope('email');
 $client->addScope('profile');
 $client->addScope(Google_Service_Classroom::CLASSROOM_COURSES_READONLY);

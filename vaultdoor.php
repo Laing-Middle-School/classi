@@ -11,7 +11,7 @@ session_start();
 
 $client = new Google_Client();
 $client->setApplicationName("classi");
-$client->setAuthConfigFile('gcred.json');
+$client->setAuthConfigFile('../gcred.json');
 $client->setRedirectUri($c->get()['important']['install-loc'] . '/vaultdoor.php');
 $client->addScope('email');
 $client->addScope('profile');
