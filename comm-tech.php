@@ -1,3 +1,5 @@
+<?php include('auth-protect.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
  
@@ -8,7 +10,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
       
-        <title>classi - Communications</title>
+        <title>Tech Help</title>
       
         <!-- Bootstrap core CSS -->
         <link href="bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -59,8 +61,8 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12 text-center">
-              <h1 class="mt-5">TechHelp!</h1>
-              <p class="lead">The emails of all the tech help staff and the buissness!</p>
+              <h1 class="mt-5">Tech Help</h1>
+              <p class="lead">Contact info for tech help and classi Support</p>
               <ul class="list-unstyled">
               </ul>
             </div>
@@ -180,13 +182,20 @@
         <table id="myTable">
           <tr class="header">
             <th style="width:60%;">Name</th>
-            <th style="width:40%;">Email</th>
-            <th style="width:40%;">Job</th>
+            <th style="width:25%;">Email</th>
+            <th style="width:15%;">Job</th>
           </tr>
+
+          <tr>
+            <td>classi Support</td>
+            <td><a href="mailto:classi@askthetech.guru" target="_blank">classi@askthetech.guru</a></td>
+            <td>Support for classi</td>
+          </tr>
+
           <tr>
             <td>Marcie Rasgo</td>
             <td>marciemjc@yahoo.com</td>
-            <td>sales</td>
+            <td>Sales</td>
           </tr>
     
         </table>
