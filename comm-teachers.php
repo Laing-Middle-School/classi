@@ -1,3 +1,5 @@
+<?php include('auth-protect.php'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,9 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="comm-teachers.php">Teachers
-                    <span class="sr-only">(current)</span>
-                  </a>
+                  <a class="nav-link" href="comm-teachers.php">Teachers</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="comm-staff.php">Staff</a>
@@ -40,31 +40,18 @@
                 <li class="nav-item">
                   <a class="nav-link" href="comm-tech.php">Tech Help</a>
                 </li>
-                  <li class="nav-item">
-                                             </a>
-                  </li>
-                  <li class="nav-item">
-                                              </a>
-                  </li>
-                  <li class="nav-item">
-                                                </a>
-                  </li>
-                  <li class="nav-item">
-                                                 </a>
-                  </li>
-                  <li class="nav-item">
-                                                    </a>
-                  </li>
-                  <li class="nav-item">
-                                                  </a>
-                  </li>
-                  </li>   <li class="nav-item">
-                    <a class="nav-link" href="">   Home                                 </a>
-                  </li>   <li class="nav-item">
-                    <a class="nav-link" href="links.php">  Links                                  </a>
-                  </li>   <li class="nav-item">
-                    <a class="nav-link" href="Teachers.html">   Communications                                </a>
- 
+
+                <li class="nav-item"><a class="nav-link"></a></li>
+                <li class="nav-item"><a class="nav-link"></a></li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="index.php">Home</a>
+                </li>   <li class="nav-item">
+                  <a class="nav-link" href="links.php">Links</a>
+                </li>   <li class="nav-item">
+                  <a class="nav-link" href="comm-teachers.php">Communications</a>
+
+                </li>
               </ul>
             </div>
           </div>
