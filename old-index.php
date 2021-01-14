@@ -76,7 +76,7 @@ echo('
            <a class="nav-link" href="#">Communications</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="mailto:classi@askthetech.guru" target="_blank">Contact</a>
           </li>
         </ul>
       </div>

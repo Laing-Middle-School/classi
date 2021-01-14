@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__.'/vendor/autoload.php';
-require 'config.php';
+require_once '../vendor/autoload.php';
+require '../config.php';
 
 $c = new classiConfig();
 
@@ -44,13 +44,13 @@ echo('
   <title>classi</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="' . $c->get()['important']['install-loc'] . '/bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../bootstrap/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Google Fonts Comfortaa Font -->
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="' . $c->get()['important']['install-loc'] . '/bootstrap/css/small-business.css" rel="stylesheet">
+  <link href="../bootstrap/css/small-business.css" rel="stylesheet">
 
 <head
 ');
@@ -191,8 +191,7 @@ echo('
 
 
   $service = new Google_Service_Classroom($client);
-  $optParams = array('pageSize' => 10);
-  $results = $service->courses->listCourses($optParams);
+  $results = $service->courses->listCourses();
 
   echo '<br>';
 
@@ -222,7 +221,6 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
 
   function listAssignments($service, $courseId, $courseName, $authuser) {
     $params = array(
-        'pageSize' => 5,
         'orderBy' => 'dueDate asc'
     );
 
@@ -299,7 +297,7 @@ echo('
           <div class="col-lg-5">
             <h1 class="font-weight-light">Shouldn'."'".'t you be in class right now?</h1>
             <p>Welcome to classi! If you have an account please click the button below to login.</p>
-            <a class="btn btn-primary" href="' . $c->get()['important']['install-loc'] . '/vault.php">Log In</a>
+            <a class="btn btn-primary" href="../vault.php">Log In</a>
           </div>
           <!-- /.col-md-4 -->
         </div>
