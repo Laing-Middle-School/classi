@@ -2,6 +2,8 @@
 
 include('vendor/autoload.php');
 
+session_start();
+
 $client = new Google_Client();
 $client->setApplicationName("classi");
 $client->setAuthConfig('gcred.json');
