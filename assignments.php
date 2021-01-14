@@ -179,7 +179,7 @@ echo('
     <!-- Learn More -->
     <div class="card text-dark bg-secondary my-2 py-1 text-center">
       <div class="card-body">
-        <p class="m-0" style="color:white">If you only see your Google Classroom assignments, you need to connect Canvas.</p>
+        <p class="m-0" style="color:white">If you only see your Google Classroom assignments, you need to connect Canvas. You can view <i>all</i> of your assignments <a href="extras/all-assignments.php" target="_blank">here</a>, however loading times may be very slow if you have a lot of assignments.</p>
       </div>
     </div>
 ');
