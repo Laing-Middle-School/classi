@@ -90,6 +90,7 @@ echo '<body>';
 echo '<center>';
 echo "<br><img src='classi.png' height='100px' width='100px'>";
 echo '<h1>classi User Preferences</h1>';
+echo '<p><a href="../index.php">Back to classi</a></p>';
 echo '<br>';
 
 
