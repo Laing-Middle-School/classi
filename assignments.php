@@ -22,6 +22,9 @@ function global_message($global_message) {
             }
     }
 
+use GuzzleHttp\Client;
+$guzzle = new Client();
+
 session_start();
 
 
