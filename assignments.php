@@ -263,6 +263,8 @@ foreach ( $response as $class ) {
 
     $i = 0;
 
+    echo('<div class="row">');
+
     foreach ( $assignments as $assignment ) {
         echoCoursework($class->name, $assignment->name, $assignment->html_url);
         if ( ++$i%3 === 0 ) { echo('</div><br><div class="row">'); }
