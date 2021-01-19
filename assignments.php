@@ -251,6 +251,8 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
 
 
 
+$token = $r->hget('canvas_token', $email);
+
 $response = json_decode($guzzle->get('https://canvas.instructure.com/api/v1/courses?access_token=' . $token)->getBody());
 
 foreach ( $response as $class ) {
