@@ -13,6 +13,8 @@ $redis = new Predis\Client(array(
     "port" => 6379
   ));
 
+$r = $redis;
+
 $experimental_features = $redis->smembers('experimental_features');
 $global_message = $redis->get('global_message');
 
