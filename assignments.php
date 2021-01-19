@@ -279,7 +279,7 @@ echo('
     <!-- Learn More -->
     <div class="card text-dark bg-secondary my-2 py-1 text-center">
       <div class="card-body">
-        <p class="m-0" style="color:white">If you only see your Google Classroom assignments, you need to connect Canvas. A tutorial will be available shortly.</p>
+        <p class="m-0" style="color:white">If you are wondering why you see only your Google Classroom assignments, it'."'".'s because you need to connect Canvas. How, you ask? A tutorial will be available shortly.</p>
       </div>
     </div>
 ');
