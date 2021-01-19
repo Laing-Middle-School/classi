@@ -25,6 +25,8 @@ function global_message($global_message) {
 use GuzzleHttp\Client;
 $guzzle = new Client();
 
+ob_start();
+
 session_start();
 
 
@@ -310,3 +312,5 @@ echo('
     ');
 
 }
+
+ob_end_flush();
