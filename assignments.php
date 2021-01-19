@@ -56,6 +56,14 @@ echo('
   <!-- Google Fonts Comfortaa Font -->
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
 
+// CSS to use a custom TTF font (could potentially speed up loading time)
+    /*
+    @font-face {
+        font-family: 'Comfortaa';
+        src: url('webfont.ttf');
+    }
+    */
+
   <!-- Custom styles for this template -->
   <link href="' . $c->get()['important']['install-loc'] . '/bootstrap/css/small-business.css" rel="stylesheet">
 
@@ -86,6 +94,9 @@ echo('
           </li>
           <li class="nav-item">
            <a class="nav-link" href="comm-teachers.php">Communications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="preferences" target="_blank">⚙️</a>
           </li>
           <!--
           <li class="nav-item">
