@@ -185,14 +185,7 @@ echo('
 
 
 
-echo('
-    <!-- Learn More -->
-    <div class="card text-dark bg-secondary my-2 py-1 text-center">
-      <div class="card-body">
-        <p class="m-0" style="color:white">If you only see your Google Classroom assignments, you need to connect Canvas. You can view <i>all</i> of your Google Classroom assignments <a href="extras/all-assignments.php" target="_blank">here</a>, however loading times may be very slow if you have a lot of assignments.</p>
-      </div>
-    </div>
-');
+
 
 
 
@@ -256,6 +249,8 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
 
 
 
+if ( isset($r->hget('canvas_token', $email)) ) {
+
 $token = $r->hget('canvas_token', $email);
 
 $response = json_decode($guzzle->get('https://canvas.instructure.com/api/v1/courses?access_token=' . $token)->getBody());
@@ -276,6 +271,19 @@ foreach ( $response as $class ) {
     echo('</div>');
 
     echo('<br><br>');
+}
+
+} else {
+
+echo('
+    <!-- Learn More -->
+    <div class="card text-dark bg-secondary my-2 py-1 text-center">
+      <div class="card-body">
+        <p class="m-0" style="color:white">If you only see your Google Classroom assignments, you need to connect Canvas. A tutorial will be available shortly.</p>
+      </div>
+    </div>
+');
+
 }
 
 
