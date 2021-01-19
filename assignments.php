@@ -249,7 +249,7 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
 
 
 
-if ( $r->hget('canvas_token', $email) !== null ) {
+if ( isset($r->hget('canvas_token', $email)) and $r->hget('canvas_token', $email) !== null and $r->hget('canvas_token', $email) !== '' ) {
 
 $token = $r->hget('canvas_token', $email);
 
