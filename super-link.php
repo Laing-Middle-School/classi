@@ -25,6 +25,7 @@ if ( $_GET['location'] == 'clever' ) {
             <meta http-equiv="refresh" content="3;url=https://clever.com/oauth/google/login">
         </center>
     ');
+}
 
 if ( $_GET['location'] == 'achieve3000' ) {
     echo('
@@ -43,9 +44,6 @@ if ( $_GET['location'] == 'achieve3000' ) {
             <meta http-equiv="refresh" content="3;url=https://clever.com/oauth/google/login?target=NTQ2NjA4ZTJhMmNiNGMwODEwMDAwNTk5;NDlkZjU5OThiZDg4NTA3NTg3NWQ=;aHR0cHM6Ly9wb3J0YWwuYWNoaWV2ZTMwMDAuY29tL3V0aWwvY2xldmVyc3NvLnBocD9wcm9kdWN0PTE=;;Y29kZQ==;">
         </center>
     ');
-
-
-
 }
 
 
