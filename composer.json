@@ -1,0 +1,7 @@
+{
+    "require": {
+        "google/apiclient": "^2.8",
+        "predis/predis": "^1.1",
+        "guzzlehttp/guzzle": "^7.2"
+    }
+}
