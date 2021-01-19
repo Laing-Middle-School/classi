@@ -88,7 +88,7 @@ echo('
            <a class="nav-link" href="comm-teachers.php">Communications</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="preferences" target="_blank">⚙️</a>
+            <a class="nav-link" href="preferences">⚙️</a>
           </li>
           <!--
           <li class="nav-item">
