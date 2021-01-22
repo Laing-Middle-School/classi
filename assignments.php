@@ -312,7 +312,7 @@ echo('
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">classi is an open source project by students and other contributors at Laing Middle School. For information about the project and/or information about reusing the classi code, please contact <a href="mailto:classi@askthetech.guru">classi@askthetech.guru</a>.<br>🐧 🐘 🐳<br><br>Theme derived from work by Start Bootstrap<br>classi Backend Written in PHP by @lincolnthedev</p>
+      <p class="m-0 text-center text-white"><h2><b>classi</b> Version 1.1</h2><br>classi is an open source project by students and other contributors at Laing Middle School. For information about the project and/or information about reusing the classi code, please contact <a href="mailto:classi@askthetech.guru">classi@askthetech.guru</a>.<br>🐧 🐘 🐳<br><br>Theme derived from work by Start Bootstrap<br>classi Backend Written in PHP by @lincolnthedev</p>
     </div>
     <!-- /.container -->
   </footer>
