@@ -47,20 +47,6 @@ if (! isset($_GET['code'])) {
   $email =  $google_account_info->email;
   $name =  $google_account_info->name;
 
-  if ( $redis->sismember('users', $email) == false ) {
-
-        $log  = "New User,".
-                date("Y, F j, g:i a").",".
-                $name.",".
-                $email.",".
-                "~".
-                PHP_EOL;
-        //Save string to log, use FILE_APPEND to append.
-        file_put_contents('acclog.csv', $log, FILE_APPEND);
-
-        $redis->sadd('users', $email);
-    }
-
 /*
   if (in_array($email, $experimental_features)) {
           echo '<img src="classidev.png" height="24px" width="24px" style="margin-top:1rem;margin-left:1rem"> <p>You are a classi contributor.</p>';
