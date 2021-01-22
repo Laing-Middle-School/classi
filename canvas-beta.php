@@ -4,19 +4,19 @@ require('vendor/autoload.php');
 
 use GuzzleHttp\Client;
 
-$client = new Client();
+$guzzle = new Client();
 
 
 
 // You must put your own token here
 $token = "YOUR_TOKEN_HERE";
 
-$response = json_decode($client->get('https://canvas.instructure.com/api/v1/courses?access_token=' . $token)->getBody());
+$response = json_decode($guzzle->get('https://canvas.instructure.com/api/v1/courses?access_token=' . $token)->getBody());
 
 foreach ( $response as $item ) {
     echo($item->name . '<br><br>');
 
-    $assignments = json_decode($client->get('https://canvas.instructure.com/api/v1/courses/' . $item->id . '/assignments?bucket=upcoming&access_token=' . $token)->getBody());
+    $assignments = json_decode($guzzle->get('https://canvas.instructure.com/api/v1/courses/' . $item->id . '/assignments?bucket=upcoming&access_token=' . $token)->getBody());
 
     $i = 0;
 

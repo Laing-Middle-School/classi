@@ -1,5 +1,7 @@
 <?php
 
+ob_start();
+
 echo '
 <html>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
@@ -63,3 +65,5 @@ echo '</html>';
 
 $redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/vaultdoor.php';
 header('Refresh:7; url=' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
+
+ob_end_flush();

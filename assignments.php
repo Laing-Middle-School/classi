@@ -13,6 +13,8 @@ $redis = new Predis\Client(array(
     "port" => 6379
   ));
 
+$r = $redis;
+
 $experimental_features = $redis->smembers('experimental_features');
 $global_message = $redis->get('global_message');
 
@@ -21,6 +23,11 @@ function global_message($global_message) {
                 echo '<center><p style="background-color:orange;color:black">' . $global_message . '</p></center>';
             }
     }
+
+use GuzzleHttp\Client;
+$guzzle = new Client();
+
+ob_start();
 
 session_start();
 
@@ -79,6 +86,9 @@ echo('
           </li>
           <li class="nav-item">
            <a class="nav-link" href="comm-teachers.php">Communications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="preferences">⚙️</a>
           </li>
           <!--
           <li class="nav-item">
@@ -175,14 +185,7 @@ echo('
 
 
 
-echo('
-    <!-- Learn More -->
-    <div class="card text-dark bg-secondary my-2 py-1 text-center">
-      <div class="card-body">
-        <p class="m-0" style="color:white">If you only see your Google Classroom assignments, you need to connect Canvas. You can view <i>all</i> of your assignments <a href="extras/all-assignments.php" target="_blank">here</a>, however loading times may be very slow if you have a lot of assignments.</p>
-      </div>
-    </div>
-');
+
 
 
 
@@ -246,6 +249,45 @@ function echoCoursework($className, $assignmentName, $assignmentURL) {
 
 
 
+if ( $r->hget('canvas_token', $email) !== null and $r->hget('canvas_token', $email) !== '' ) {
+
+$token = $r->hget('canvas_token', $email);
+
+$response = json_decode($guzzle->get('https://canvas.instructure.com/api/v1/courses?access_token=' . $token)->getBody());
+
+foreach ( $response as $class ) {
+
+    $assignments = json_decode($guzzle->get('https://canvas.instructure.com/api/v1/courses/' . $class->id . '/assignments?bucket=upcoming&access_token=' . $token)->getBody());
+
+    $i = 0;
+
+    echo('<div class="row">');
+
+    foreach ( $assignments as $assignment ) {
+        echoCoursework($class->name, $assignment->name, $assignment->html_url);
+        if ( ++$i%3 === 0 ) { echo('</div><br><div class="row">'); }
+    }
+
+    echo('</div>');
+
+    echo('<br><br>');
+}
+
+} else {
+
+echo('
+    <!-- Learn More -->
+    <div class="card text-dark bg-secondary my-2 py-1 text-center">
+      <div class="card-body">
+        <p class="m-0" style="color:white">If you are wondering why you see only your Google Classroom assignments, it'."'".'s because you need to connect Canvas. How, you ask? A tutorial will be available shortly.</p>
+      </div>
+    </div>
+');
+
+}
+
+
+
 if (count($results->getCourses()) == 0) {
     echo "No courses found.\n";
   } else {
@@ -270,7 +312,7 @@ echo('
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">This work by contributors at Laing Middle School is under Creative Commons License CC BY-NC-SA<br>Theme derived from work by Start Bootstrap<br>The classi logo and name are unregistered trademarks of @lincolnthedev</p>
+      <p class="m-0 text-center text-white">classi is an open source project by students and other contributors at Laing Middle School. For information about the project and/or information about reusing the classi code, please contact <a href="mailto:classi@askthetech.guru">classi@askthetech.guru</a>.<br>🐧 🐘 🐳<br><br>Theme derived from work by Start Bootstrap<br>classi Backend Written in PHP by @lincolnthedev</p>
     </div>
     <!-- /.container -->
   </footer>
@@ -307,3 +349,5 @@ echo('
     ');
 
 }
+
+ob_end_flush();
